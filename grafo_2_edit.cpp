@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <windows.h>
+
 #define MAX 8
 
 struct stgraph{
@@ -13,7 +14,17 @@ struct stgraph{
 
 int mat = 0;
 struct stgraph graph[MAX][MAX];
-int maxgraph(stgraph[MAX][MAX]);
+
+int maxgraph(stgraph[MAX][MAX]){
+	int max=0,i; 	
+	for(i=0;i<MAX;i++){
+		if(((graph[i][0].size)>max)&&(graph[i][0].flag==0)){
+			max = i+1;
+			graph[i][0].flag = 1;
+		}
+	}
+	return max;
+}
 
 int main(){	
 	int color=0;
@@ -21,7 +32,7 @@ int main(){
 	int colormax=0;
 	int mat=0;
 	
-	printf("Matrix size X,Y:");
+	printf("Matrix size:");
 	scanf("%d",&mat);
 	
 	for(int i=0;i<mat;i++){	
@@ -33,8 +44,8 @@ int main(){
 			}
 		}
 	}
-	
 	system("cls");
+	
 	for(int i=0;i<mat;i++){
 		printf("Incidences %i: ", i+1);
 		for(int j=0;j<mat;j++){
@@ -42,7 +53,7 @@ int main(){
 		}
 		printf("\n");
 	}	
-	printf("\nBigger incidence - Line: %d\n\n", maxgraph(graph));
+	printf("\nBigger incidence - Line: %d\n", maxgraph(graph));
 				
 	for(int i=0;i<mat;i++){
 		grafmax = maxgraph(graph);			
@@ -62,13 +73,4 @@ int main(){
 	printf("\nNumber of colors needed to fill this graph:%d\n\n", colormax);
 }
 
-int maxgraph(stgraph[MAX][MAX]){
-	int max=0,i; 	
-	for(i=0;i<MAX;i++){
-		if(((graph[i][0].size)>max)&&(graph[i][0].flag==0)){
-			max = i+1;
-			graph[i][0].flag = 1;
-		}
-	}
-	return max;
-}
+
