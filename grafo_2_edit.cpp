@@ -12,7 +12,7 @@ struct stgraph{
 	int incid;
 };
 
-int mat = 0;
+
 struct stgraph graph[MAX][MAX];
 
 int maxgraph(stgraph[MAX][MAX]){
@@ -70,7 +70,7 @@ int main(){
 		}
 		color=0;
 	}		
-	printf("\nNumber of colors needed to fill this graph:%d\n\n", colormax);
+	printf("\n%d colors are needed to fill this graph", colormax);
 }
 
 
